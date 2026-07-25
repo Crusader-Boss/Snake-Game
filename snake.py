@@ -8,6 +8,7 @@ class Snake:
     def __init__(self):
         self.segments = []
         self.create_snake()
+        self.head = self.segments[0]
         
 
     def create_snake(self):
@@ -19,3 +20,11 @@ class Snake:
             segment.goto(position)
             self.segments.append(segment)
         #print(self.segments)
+
+    def move(self):
+        for i in range(len(self.segments) - 1, 0, -1):
+            self.segments[i].goto(
+            self.segments[i - 1].xcor(),
+            self.segments[i - 1].ycor()
+            )
+        self.head.forward(20)
